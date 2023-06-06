@@ -1,0 +1,107 @@
+<br /><br /><br /><br />
+<div class="formgrid grid">
+  <div class="col-4">
+    <p-panel header="Formulario Reactivo con PrimeNg">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-fluid">
+        <div class="field">
+          <label>ID:</label>
+          <input type="number" pInputText formControlName="id" />
+        </div>
+        <div class="field">
+          <label>Marca bicicleta:</label>
+          <input type="text" pInputText formControlName="mark" />
+          <small
+            *ngIf="
+              form.controls['mark'].errors && form.controls['mark'].touched
+            "
+          >
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Precio:</label>
+          <p-inputNumber
+            inputId="currency-us"
+            mode="currency"
+            currency="USD"
+            locale="en-US"
+            formControlName="price"
+          ></p-inputNumber>
+          <small
+            *ngIf="
+              form.controls['price'].errors && form.controls['price'].touched
+            "
+          >
+            Tiene errores
+          </small>
+        </div>
+        <div class="field">
+          <label>Creation:</label>
+          <p-calendar
+            formControlName="ageOfCreation"
+            [showIcon]="true"
+          ></p-calendar>
+          <small
+            *ngIf="
+              form.controls['price'].errors && form.controls['price'].touched
+            "
+          >
+            Tiene errores
+          </small>
+        </div>
+        <div class="field flex justify-content-between">
+          <label>Disponibilidad:</label>
+          <div>
+            <p-inputSwitch formControlName="disponibility"></p-inputSwitch>
+          </div>
+        </div>
+        <!--
+        <div class="fiel flex justify-content-between">
+          <label>Rin bicicleta:</label>
+          <p-knob formControlName="rin"></p-knob>
+
+          <small
+            *ngIf="
+              form.controls['mark'].errors && form.controls['mark'].touched
+            "
+          >
+            Tiene errores
+          </small>
+        </div>
+        <div class="fiel ">
+          <label>Asiento bicicleta:</label>
+          <p-slider formControlName="sillin"></p-slider>
+          <small
+          *ngIf="
+            form.controls['mark'].errors && form.controls['mark'].touched
+          "
+        >
+          Tiene errores
+        </small>
+        </div><br>
+      -->
+        <div class="fiel"></div>
+        <div class="fiel"></div>
+        <div class="fiel"></div>
+        <div class="field">
+          <p-button type="sumbit" label="Guardar"></p-button>
+          <button
+            pButton
+            type="button"
+            class="p-button-warning"
+            label="Actualizar"
+            (click)="updateBike()"
+          ></button>
+          <button
+            pButton
+            type="button"
+            class="p-button-success"
+            label="Ver Listado"
+            [routerLink]="['/bikelist']"
+          ></button>
+        </div>
+      </form>
+    </p-panel>
+  </div>
+</div>
+{{ form.value | json }}
