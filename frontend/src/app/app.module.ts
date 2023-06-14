@@ -19,13 +19,17 @@ import { KnobModule } from 'primeng/knob';
 import { SliderModule } from 'primeng/slider';
 import {TableModule} from "primeng/table";
 import { HttpClientModule } from '@angular/common/http';
+import { ListsComponent } from './lists/lists/lists.component';
+import { ListsListComponent } from './lists/lists-list/lists-list.component';
 //
 
 @NgModule({
   declarations: [
     AppComponent,
     BikeComponent,
-    BikelistComponent
+    BikelistComponent,
+    ListsComponent,
+    ListsListComponent
   ],
   imports: [
     BrowserModule,

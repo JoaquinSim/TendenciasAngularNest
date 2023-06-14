@@ -8,6 +8,7 @@ import {
   StudentsController,
   SubjectsController,
   InformationTeachersController,
+  ListController,
 } from '@core/controllers';
 import {
   CareersService,
@@ -18,6 +19,7 @@ import {
   StudentsService,
   SubjectsService,
   InformationTeachersService,
+  ListsService,
 } from '@core/services';
 import { DatabaseModule } from '@database';
 import { coreProviders } from '@core/providers';
@@ -34,6 +36,7 @@ import { coreProviders } from '@core/providers';
     InstitutionsController,
     StudentsController,
     SubjectsController,
+    ListController,
   ],
   providers: [
     ...coreProviders,
@@ -45,6 +48,7 @@ import { coreProviders } from '@core/providers';
     InstitutionsService,
     StudentsService,
     SubjectsService,
+    ListsService,
   ],
   exports: [
     ...coreProviders,
@@ -56,6 +60,7 @@ import { coreProviders } from '@core/providers';
     InstitutionsService,
     StudentsService,
     SubjectsService,
+    ListsService,
   ],
 })
 export class CoreModule {}

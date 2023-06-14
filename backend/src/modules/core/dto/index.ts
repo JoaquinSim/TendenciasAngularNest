@@ -39,3 +39,7 @@ export * from './subjects/subject.dto';
 export * from './subjects/create-subject.dto';
 export * from './subjects/filter-subject.dto';
 export * from './subjects/update-subject.dto';
+
+export * from './lists/lists.dto';
+export * from './lists/create-list.dto'
+export * from './lists/update-list.dto';
