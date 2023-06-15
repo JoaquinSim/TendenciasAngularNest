@@ -1,4 +1,4 @@
-export * from './candiatos-list.entity';
+export * from './candidatos-list.entity';
 export * from './cargo.entity';
 export * from './carrera.entity';
 export * from './usuario.entity';

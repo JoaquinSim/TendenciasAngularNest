@@ -9,8 +9,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CatalogueEntity, StudentEntity } from '@core/entities';
-import { StringSupportOption } from 'prettier';
 
 @Entity('usuario', { schema: 'core' })
 export class InformationStudentEntity {
@@ -21,6 +19,7 @@ export class InformationStudentEntity {
     name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
+    comment: 'fecha de creación de usuario'
   })
   createdAt: Date;
 
@@ -28,6 +27,7 @@ export class InformationStudentEntity {
     name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
+    comment: 'fecha de actualización de usuario'
   })
   updateAt: Date;
 
@@ -35,9 +35,10 @@ export class InformationStudentEntity {
     name: 'deleted_at',
     type: 'timestamptz',
     nullable: true,
+    comment: 'fecha de eliminación de usuario'
   })
   deletedAt: Date;
-
+/*
   @OneToOne(() => StudentEntity)
   student: StudentEntity;
 
@@ -60,7 +61,7 @@ export class InformationStudentEntity {
   @ManyToOne(() => CatalogueEntity, { nullable: true })
   @JoinColumn({ name: 'is_subject_repeat' })
   isSubjectRepeat: CatalogueEntity;
-
+*/
   /*
   // COLUMNS
   */
