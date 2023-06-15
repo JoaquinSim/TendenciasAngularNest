@@ -10,10 +10,10 @@ import {
 } from 'typeorm';
 import { CatalogueEntity, InstitutionEntity } from '@core/entities';
 
-@Entity('careers', { schema: 'core' })
+@Entity('candidatos_lista', { schema: 'core' })
 export class CareerEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  idCandidatoLista: string;
 
   @CreateDateColumn({
     name: 'created_at',
@@ -63,52 +63,27 @@ export class CareerEntity {
   @JoinColumn({ name: 'type_id' })
   type: CatalogueEntity;
 
-  @Column('varchar', {
-    name: 'acronym',
-    comment: 'Acronimo de la carrera Ej. DS, MKT, GN',
+  /*
+  // COLUMS
+  */
+  @Column({
+    name: 'id_lista',
+    type: 'int',
+    comment: 'Id que tiene la lista ',
   })
-  acronym: string;
+  id_lista: number;
 
-  @Column('varchar', {
-    name: 'code',
-    comment: 'Codigo de la carrera',
+  @Column({
+    name: 'id_usuario',
+    type: 'int',
+    comment: 'Id que tiene el usuario',
   })
-  code: string;
+  id_usuario: number;
 
-  @Column('varchar', {
-    comment: 'Codigo sniese de la carrera',
-    name: 'code_sniese',
+  @Column({
+    name: 'id_cargo',
+    type: 'int',
+    comment: 'Id que tiene el cargo',
   })
-  codeSniese: string;
-
-  @Column('varchar', {
-    name: 'degree',
-    comment: 'Titulo que otorga la carrera',
-  })
-  degree: string;
-
-  @Column('varchar', {
-    name: 'logo',
-    nullable: true,
-    comment: 'Logo de la carrera',
-  })
-  logo: string;
-
-  @Column('varchar', {
-    name: 'name',
-    comment: 'Nombre de la carrera',
-  })
-  name: string;
-
-  @Column('float', {
-    comment: 'Numero de resolucion de la carrera',
-    name: 'resolution_number',
-  })
-  resolutionNumber: string;
-
-  @Column('varchar', {
-    name: 'short_name',
-    comment: 'Nombre corto de la carrera',
-  })
-  shortName: string;
+  id_cargo: number;
 }
