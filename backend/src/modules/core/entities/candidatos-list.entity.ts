@@ -8,7 +8,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CatalogueEntity, InstitutionEntity } from '@core/entities';
 
 @Entity('candidatos_lista', { schema: 'core' })
 export class CareerEntity {
@@ -19,7 +18,7 @@ export class CareerEntity {
     name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de creacion de la carrera',
+    comment: 'Fecha de creacion de candidatos',
   })
   createdAt: Date;
 
@@ -27,7 +26,7 @@ export class CareerEntity {
     name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de actualizacion de la carrera',
+    comment: 'Fecha de actualizacion de candidatos',
   })
   updatedAt: Date;
 
@@ -35,10 +34,10 @@ export class CareerEntity {
     name: 'deleted_at',
     type: 'timestamptz',
     nullable: true,
-    comment: 'Fecha de eliminacion de la carrera',
+    comment: 'Fecha de eliminacion de candidatos',
   })
   deletedAt: Date;
-
+/*
   @ManyToOne(() => InstitutionEntity, {
     nullable: true,
   })
@@ -62,7 +61,7 @@ export class CareerEntity {
   })
   @JoinColumn({ name: 'type_id' })
   type: CatalogueEntity;
-
+*/
   /*
   // COLUMS
   */

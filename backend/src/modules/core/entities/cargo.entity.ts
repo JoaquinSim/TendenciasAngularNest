@@ -8,9 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CatalogueTypeEnum, CatalogueStateEnum } from '@shared/enums';
 
-@Entity('catalogues', { schema: 'core' })
+@Entity('cargo', { schema: 'core' })
 export class CatalogueEntity {
   @PrimaryGeneratedColumn('uuid')
   idCargo: string;
@@ -19,7 +18,7 @@ export class CatalogueEntity {
     name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de creacion del registro',
+    comment: 'Fecha de creacion del cargo',
   })
   createdAt: Date;
 
@@ -27,7 +26,7 @@ export class CatalogueEntity {
     name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de actualizacion de la ultima actualizacion del registro',
+    comment: 'Fecha de actualizacion de la ultima actualizacion del cargo',
   })
   updatedAt: Date;
 
@@ -35,7 +34,7 @@ export class CatalogueEntity {
     name: 'deleted_at',
     type: 'timestamptz',
     nullable: true,
-    comment: 'Fecha de eliminacion del registro',
+    comment: 'Fecha de eliminacion del cargo',
   })
   deletedAt: Date;
 
