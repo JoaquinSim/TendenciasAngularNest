@@ -65,6 +65,7 @@ export class CareerEntity {
   /*
   // COLUMS
   */
+
   @Column({
     name: 'id_lista',
     type: 'int',
@@ -85,4 +86,5 @@ export class CareerEntity {
     comment: 'Id que tiene el cargo',
   })
   id_cargo: number;
+
 }
