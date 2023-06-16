@@ -9,10 +9,10 @@ import {
 } from 'typeorm';
 import { CareerEntity, CatalogueEntity } from '@core/entities';
 
-@Entity('curricula', { schema: 'core' })
+@Entity('carrera', { schema: 'core' })
 export class CurriculumEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  idCarrera: string;
 
   @CreateDateColumn({
     name: 'ended_At',
@@ -50,47 +50,20 @@ export class CurriculumEntity {
   @ManyToOne(() => CatalogueEntity, { nullable: false })
   state: CatalogueEntity;
 
-  @Column('varchar', {
-    name: 'code',
-    length: 255,
-    default: 'SN',
-    comment: 'Nombre del producto',
-  })
-  code: string;
+  /*
+  // COLUMS 
+  */
+ @Column({
+  name: 'codigo',
+  type: 'int',
+  Comment: 'Codigo que tiene la carrera'
+ })
+ codigo: string
 
-  @Column('varchar', {
-    name: 'name',
-    length: 255,
-    default: 'SN',
-    comment: 'Nombre del producto',
-  })
-  name: string;
-
-  @Column('varchar', {
-    name: 'description',
-    length: 255,
-    default: 'SN',
-    comment: 'Nombre del producto',
-  })
-  description: string;
-
-  @Column('varchar', {
-    name: 'resolution_Number',
-    length: 255,
-    default: 'SN',
-    comment: 'Numero de resolucion',
-  })
-  resolutionNumber: string;
-
-  @Column('float', {
-    name: 'periodic_Academic_Number',
-    comment: 'numero de periodo academmico',
-  })
-  periodicAcademicNumber: number;
-
-  @Column('float', {
-    name: 'weeks_Number',
-    comment: 'Numeros de semanas',
-  })
-  weeksNumber: number;
+ @Column({
+  name: 'nombre',
+  type: 'varchar',
+  Comment: 'Nombre de la carrera Ej. Desarrollo de Software'
+ })
+ nombre: string
 }

@@ -13,7 +13,7 @@ import { CatalogueTypeEnum, CatalogueStateEnum } from '@shared/enums';
 @Entity('catalogues', { schema: 'core' })
 export class CatalogueEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  idCargo: string;
 
   @CreateDateColumn({
     name: 'created_at',
@@ -45,42 +45,20 @@ export class CatalogueEntity {
   @OneToMany(() => CatalogueEntity, (category) => category.parent)
   children: CatalogueEntity[];
 
-  @Column('varchar', {
-    name: 'code',
-    comment: 'Nombre del producto',
+  /*
+  // COLUMS
+  */
+  @Column({
+    name: 'nombreCargo',
+    type: 'varchar',
+    comment: 'Nombre del cargo. Ej: ',
   })
-  code: string;
+  nombreCargo: string;
 
-  @Column('varchar', {
-    name: 'description',
-    comment: 'Nombre del producto',
+  @Column({
+    name: 'descripcionCargo',
+    type: 'varchar',
+    comment: 'Descripcion del cargo en el que se encuentra. Ej. Presidente, Secretario'
   })
-  description: string;
-
-  @Column('boolean', {
-    name: 'is_visible',
-    default: true,
-    comment: 'true=visible, false=no visible',
-  })
-  isVisible: boolean;
-
-  @Column('varchar', {
-    name: 'name',
-    comment: 'Nombre del producto',
-  })
-  name: string;
-
-  @Column('enum', {
-    name: 'state',
-    enum: CatalogueStateEnum,
-    comment: 'Nombre del producto',
-  })
-  state: CatalogueStateEnum;
-
-  @Column('enum', {
-    name: 'type',
-    enum: CatalogueTypeEnum,
-    comment: 'Nombre del producto',
-  })
-  type: CatalogueTypeEnum;
+  descripcionCargo: string;
 }
