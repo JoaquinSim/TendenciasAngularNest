@@ -1,4 +1,4 @@
-export * from './candiatos-list.entity';
+export * from './candidatos-list.entity';
 export * from './cargo.entity';
 export * from './carrera.entity';
 export * from './usuario.entity';
@@ -7,3 +7,11 @@ export * from './institution.entity';
 export * from './roles_usuario.entity';
 export * from './roles.entity';
 export * from './list.entity';
+export * from './student.entity';
+export * from './subject.entity';
+export * from './list.entity';
+export * from './listType.entity';
+export * from './configuration.entity';
+export * from './userType.entity';
+export * from './tarea.entity';
+export * from './periodo.entity';

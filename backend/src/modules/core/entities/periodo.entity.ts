@@ -8,18 +8,17 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CatalogueEntity, InstitutionEntity } from '@core/entities';
 
-@Entity('candidatos_lista', { schema: 'core' })
-export class CareerEntity {
+@Entity('period', { schema: 'core' })
+export class PeriodEntity {
   @PrimaryGeneratedColumn('uuid')
-  idCandidatoLista: string;
+  id_period: string;
 
   @CreateDateColumn({
     name: 'created_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de creacion de la carrera',
+    comment: 'Fecha de creacion de el periodo lectivo',
   })
   createdAt: Date;
 
@@ -27,7 +26,7 @@ export class CareerEntity {
     name: 'updated_at',
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
-    comment: 'Fecha de actualizacion de la carrera',
+    comment: 'Fecha de actualizacion de el periodo lectivo',
   })
   updatedAt: Date;
 
@@ -35,10 +34,10 @@ export class CareerEntity {
     name: 'deleted_at',
     type: 'timestamptz',
     nullable: true,
-    comment: 'Fecha de eliminacion de la carrera',
+    comment: 'Fecha de eliminacion de el periodo lectivo',
   })
   deletedAt: Date;
-
+  /*
   @ManyToOne(() => InstitutionEntity, {
     nullable: true,
   })
@@ -62,30 +61,32 @@ export class CareerEntity {
   })
   @JoinColumn({ name: 'type_id' })
   type: CatalogueEntity;
-
-  /*
-  // COLUMS
-  */
+*/
+  @Column({
+    type: 'varchar',
+    name: 'period_name',
+    comment: 'nombre del periodo lectivo',
+  })
+  periodName: string;
 
   @Column({
-    name: 'id_lista',
-    type: 'int',
-    comment: 'Id que tiene la lista ',
+    type: 'date',
+    name: 'start_date',
+    comment: 'Fecha de inicio del periodo lectivo',
   })
-  id_lista: number;
+  startDate: Date;
 
   @Column({
-    name: 'id_usuario',
-    type: 'int',
-    comment: 'Id que tiene el usuario',
+    type: 'date',
+    name: 'end_date',
+    comment: 'Fecha fin del periodo lectivo',
   })
-  id_usuario: number;
+  endDate: Date;
 
   @Column({
-    name: 'id_cargo',
-    type: 'int',
-    comment: 'Id que tiene el cargo',
+    type: 'boolean',
+    name: 'state',
+    comment: 'Estado del periodo',
   })
-  id_cargo: number;
-
+  state: boolean;
 }

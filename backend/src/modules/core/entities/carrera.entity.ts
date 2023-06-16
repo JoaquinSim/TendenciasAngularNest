@@ -7,7 +7,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CareerEntity, CatalogueEntity } from '@core/entities';
 
 @Entity('carrera', { schema: 'core' })
 export class CurriculumEntity {
@@ -43,13 +42,13 @@ export class CurriculumEntity {
     nullable: true,
   })
   deletedAT: Date;
-
+/*
   @ManyToOne(() => CareerEntity, { nullable: false })
   career: CareerEntity;
 
   @ManyToOne(() => CatalogueEntity, { nullable: false })
   state: CatalogueEntity;
-
+*/
   /*
   // COLUMS 
   */

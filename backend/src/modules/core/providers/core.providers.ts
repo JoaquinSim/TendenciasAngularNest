@@ -9,6 +9,11 @@ import {
   StudentEntity,
   SubjectEntity,
   ListEntity,
+  ListTypeEntity,
+  ConfigurationEntity,
+  UserTypeEntity,
+  TaskEntity,
+  PeriodEntity,
 } from '@core/entities';
 import { DataSourceEnum, RepositoryEnum } from '@shared/enums';
 
@@ -62,9 +67,33 @@ export const coreProviders = [
     inject: [DataSourceEnum.PG_DATA_SOURCE],
   },
   {
-    provide: RepositoryEnum.LIST_REPOSITORY,
+    provide: RepositoryEnum.LIST_TYPE_RESPOSITORY,
     useFactory: (dataSource: DataSource) =>
-      dataSource.getRepository(ListEntity),
+      dataSource.getRepository(ListTypeEntity),
+    inject: [DataSourceEnum.PG_DATA_SOURCE],
+  },
+  {
+    provide: RepositoryEnum.CONFIGURATION_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(ConfigurationEntity),
+    inject: [DataSourceEnum.PG_DATA_SOURCE],
+  },
+  {
+    provide: RepositoryEnum.USER_TYPE_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(UserTypeEntity),
+    inject: [DataSourceEnum.PG_DATA_SOURCE],
+  },
+  {
+    provide: RepositoryEnum.TASK_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(TaskEntity),
+    inject: [DataSourceEnum.PG_DATA_SOURCE],
+  },
+  {
+    provide: RepositoryEnum.PERIODO_REPOSITORY,
+    useFactory: (dataSource: DataSource) =>
+      dataSource.getRepository(PeriodEntity),
     inject: [DataSourceEnum.PG_DATA_SOURCE],
   },
 ];

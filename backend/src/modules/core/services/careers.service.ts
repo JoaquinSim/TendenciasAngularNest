@@ -12,9 +12,9 @@ import { ServiceResponseHttpModel } from '@shared/models';
 import { RepositoryEnum } from '@shared/enums';
 
 @Injectable()
-export class CareersService {
+export class CandidatosListService {
   constructor(
-    @Inject(RepositoryEnum.CAREER_REPOSITORY)
+    @Inject(RepositoryEnum.CANDIDATOLISTA_REPOSITORY)
     private careerRepository: Repository<CareerEntity>,
     private institutionService: InstitutionsService,
     private cataloguesService: CataloguesService,
