@@ -7,3 +7,8 @@ export * from './institution.entity';
 export * from './student.entity';
 export * from './subject.entity';
 export * from './list.entity';
+export * from './listType.entity';
+export * from './configuration.entity';
+export * from './userType.entity';
+export * from './tarea.entity';
+export * from './periodo.entity';
