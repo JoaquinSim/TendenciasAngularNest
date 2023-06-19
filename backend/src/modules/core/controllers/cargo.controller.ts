@@ -7,56 +7,55 @@ import {
   HttpStatus,
   Param,
   ParseUUIDPipe,
-  Patch,
   Post,
   Put,
   Query,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ResponseHttpModel } from '@shared/models';
-import { CataloguesService } from '@core/services';
+import { CargoService } from '@core/services';
 import {
   CreateCatalogueDto,
   FilterCatalogueDto,
   UpdateCatalogueDto,
 } from '@core/dto';
-import { CatalogueEntity } from '@core/entities';
-import { CatalogueTypeEnum } from '@shared/enums';
+import { CargoEntity } from '@core/entities';
+import { CargoTypeEnum } from '@shared/enums';
 
-@ApiTags('catalogues')
-@Controller('catalogues')
+@ApiTags('cargo')
+@Controller('cargo')
 export class CataloguesController {
-  constructor(private catalogueService: CataloguesService) {}
+  constructor(private cargoService: CargoService) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() payload: CreateCatalogueDto) {
-    const data = await this.catalogueService.create(payload);
+    const data = await this.cargoService.create(payload);
 
     return {
       data,
-      message: 'created',
+      message: 'Creado',
     };
   }
 
-  @ApiOperation({ summary: 'List all catalogues' })
+  @ApiOperation({ summary: 'List all catalogues cargo' })
   @Get('catalogue')
   @HttpCode(HttpStatus.OK)
-  async catalogue(@Query('type') type: CatalogueTypeEnum) {
-    const response = await this.catalogueService.catalogue(type);
+  async catalogue(@Query('type') type: CargoTypeEnum) {
+    const response = await this.cargoService.catalogue(type);
     return {
       data: response.data,
-      message: `catalogue`,
-      title: `Catalogue`,
+      message: `cargo`,
+      title: `Cargo`,
     } as ResponseHttpModel;
   }
 
-  @ApiOperation({ summary: 'List of catalogues' })
+  @ApiOperation({ summary: 'List of cargos' })
   // @Roles(RoleEnum.ADMIN)
   @Get()
   @HttpCode(HttpStatus.OK)
   async findAll(@Query() params: FilterCatalogueDto) {
-    const response = await this.catalogueService.findAll(params);
+    const response = await this.cargoService.findAll(params);
     return {
       data: response.data,
       pagination: response.pagination,
@@ -67,11 +66,11 @@ export class CataloguesController {
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   async findOne(@Param('id', ParseUUIDPipe) id: string) {
-    const data = await this.catalogueService.findOne(id);
+    const data = await this.cargoService.findOne(id);
     return {
       data,
       message: `show ${id}`,
-      title: `Success`,
+      title: `Exito`,
     } as ResponseHttpModel;
   }
 
@@ -81,36 +80,24 @@ export class CataloguesController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() payload: UpdateCatalogueDto,
   ) {
-    const data = await this.catalogueService.update(id, payload);
+    const data = await this.cargoService.update(id, payload);
 
     return {
       data: data,
-      message: `Catalogue updated ${id}`,
-      title: `Updated`,
+      message: `Cargo Actualizado ${id}`,
+      title: `Actualizado con Exito`,
     } as ResponseHttpModel;
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.CREATED)
   async remove(@Param('id', ParseUUIDPipe) id: string) {
-    const data = await this.catalogueService.remove(id);
+    const data = await this.cargoService.remove(id);
 
     return {
       data,
-      message: `Catalogue deleted ${id}`,
-      title: `Deleted`,
-    };
-  }
-
-  @Patch('remove-all')
-  @HttpCode(HttpStatus.CREATED)
-  async removeAll(@Body() payload: CatalogueEntity[]) {
-    const data = await this.catalogueService.removeAll(payload);
-
-    return {
-      data,
-      message: `Catalogues deleted`,
-      title: `Deleted`,
+      message: `Cargo Eliminado ${id}`,
+      title: `Eliminado con Exito`,
     };
   }
 }
