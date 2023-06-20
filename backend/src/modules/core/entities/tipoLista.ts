@@ -12,7 +12,7 @@ import {
 @Entity('tipo_lista', { schema: 'core' })
 export class TipoListaEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id_tipoLista: string;
 
   @CreateDateColumn({
     name: 'created_at',
