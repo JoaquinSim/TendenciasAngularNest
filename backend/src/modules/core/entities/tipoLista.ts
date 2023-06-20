@@ -9,10 +9,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('list_type', { schema: 'core' })
-export class ListTypeEntity {
+@Entity('tipo_lista', { schema: 'core' })
+export class TipoListaEntity {
   @PrimaryGeneratedColumn('uuid')
-  id_listType: string;
+  id: string;
 
   @CreateDateColumn({
     name: 'created_at',

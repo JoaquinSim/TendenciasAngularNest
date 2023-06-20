@@ -5,11 +5,12 @@ export * from './configuration.entity';
 export * from './information-teacher.entity';
 export * from './institution.entity';
 export * from './list.entity';
-export * from './listType.entity';
+export * from './tipoLista';
 export * from './periodo.entity';
 export * from './roles_usuario.entity';
 export * from './roles.entity';
 export * from './tarea.entity';
-export * from './userType.entity';
+export * from './tipoUsuario';
 export * from './usuario.entity';
 export * from './votos.entity';
+export * from './cronograma.entity'

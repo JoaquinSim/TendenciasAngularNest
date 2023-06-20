@@ -8,3 +8,4 @@ export * from './information-students.service';
 export * from './information-teachers.service';
 export * from './subjects.service';
 export * from './lists.service';
+export * from './catalogues.service'
