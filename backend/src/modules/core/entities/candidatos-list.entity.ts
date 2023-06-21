@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity('candidatos_lista', { schema: 'core' })
-export class CareerEntity {
+export class CandidatosEntity {
   @PrimaryGeneratedColumn('uuid')
   idCandidatoLista: string;
 

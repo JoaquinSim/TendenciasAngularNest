@@ -14,14 +14,14 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CreateCareerDto, UpdateCareerDto, FilterCareerDto } from '@core/dto';
-import { CandidatosService } from '@core/services';
-import { candidatos-listEntity } from '@core/entities';
+import { CandidatosListService } from '@core/services';
+import { CandidatosEntity } from '@core/entities';
 import { ResponseHttpModel } from '@shared/models';
 
 @ApiTags('Candidatos')
 @Controller('candidatos')
 export class CareersController {
-  constructor(private candidatosService: CandidatosService) {}
+  constructor(private candidatosService: CandidatosListService) {}
 
   @ApiOperation({ summary: 'Catalogue Candidatos' })
   @Get('catalogue')
