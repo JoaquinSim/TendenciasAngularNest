@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 
 @Entity('cargo', { schema: 'core' })
-export class CatalogueEntity {
+export class CargoEntity {
   @PrimaryGeneratedColumn('uuid')
   idCargo: string;
 
@@ -38,11 +38,11 @@ export class CatalogueEntity {
   })
   deletedAt: Date;
 
-  @ManyToOne(() => CatalogueEntity, (category) => category.children)
-  parent: CatalogueEntity;
+  @ManyToOne(() => CargoEntity, (category) => category.children)
+  parent: CargoEntity;
 
-  @OneToMany(() => CatalogueEntity, (category) => category.parent)
-  children: CatalogueEntity[];
+  @OneToMany(() => CargoEntity, (category) => category.parent)
+  children: CargoEntity[];
 
   /*
   // COLUMS

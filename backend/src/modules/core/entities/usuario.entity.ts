@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 
 @Entity('usuario', { schema: 'core' })
-export class InformationStudentEntity {
+export class UsuarioEntity {
   @PrimaryGeneratedColumn('uuid')
   idUsuario: string;
 

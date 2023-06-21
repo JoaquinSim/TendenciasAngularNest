@@ -1,15 +1,16 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Repository, FindOptionsWhere, ILike } from 'typeorm';
 import {
-  CreateCandidatosListaDto,
-  UpdateCandidatoDto,
-  FilterCandidatoListaDto,
+  // CreateCandidatosListaDto,
+  // UpdateCandidatoDto,
+  // FilterCandidatoListaDto,
   PaginationDto,
 } from '@core/dto';
 import { CandidatosEntity } from '@core/entities';
 import { InstitutionsService, CataloguesService } from '@core/services';
 import { ServiceResponseHttpModel } from '@shared/models';
 import { RepositoryEnum } from '@shared/enums';
+import { any } from 'joi';
 
 @Injectable()
 export class CandidatosListService {
@@ -22,7 +23,7 @@ export class CandidatosListService {
 
   async catalogue(): Promise<ServiceResponseHttpModel> {
     const response = await this.candidatosListaRepository.findAndCount({
-      relations: ['institution', 'modality', 'state', 'type'],
+      relations: ['idLista', 'IdCandidato', 'IdCargo'],
       take: 1000,
     });
 
@@ -35,7 +36,7 @@ export class CandidatosListService {
     };
   }
 
-  async create(payload: CreateCandidatosListaDto): Promise<ServiceResponseHttpModel> {
+  async create(payload: any): Promise<ServiceResponseHttpModel> {
     const newCandidato = this.candidatosListaRepository.create(payload);
 
     // newCareer.institution = await this.institutionService.findOne(
@@ -48,14 +49,14 @@ export class CandidatosListService {
 
     newCandidato.state = await this.cataloguesService.findOne(payload.state.id);
 
-    newCandidato.type = await this.cataloguesService.findOne(payload.type.id);
+    //newCandidato.type = await this.cataloguesService.findOne(payload.type.id);
 
     const candidatoCreated = await this.candidatosListaRepository.save(newCandidato);
 
     return { data: candidatoCreated };
   }
 
-  async findAll(params?: FilterCandidatoListaDto): Promise<ServiceResponseHttpModel> {
+  async findAll(params?: any): Promise<ServiceResponseHttpModel> {
     //Pagination & Filter by search
     if (params?.limit > 0 && params?.page >= 0) {
       return await this.paginateAndFilter(params);
@@ -65,7 +66,7 @@ export class CandidatosListService {
 
     //All
     const data = await this.candidatosListaRepository.findAndCount({
-      relations: ['institution', 'modality', 'state', 'type'],
+      relations: ['idLista', 'IdCandidato', 'IdCargo'],
     });
 
     return { pagination: { totalItems: data[1], limit: 10 }, data: data[0] };
@@ -73,7 +74,7 @@ export class CandidatosListService {
 
   async findOne(id: string): Promise<any> {
     const candidatos = await this.candidatosListaRepository.findOne({
-      relations: ['institution', 'modality', 'state', 'type'],
+      relations: ['idLista', 'IdCandidato', 'IdCargo'],
       where: {
         id,
       },
@@ -87,14 +88,14 @@ export class CandidatosListService {
 
   async update(
     id: string,
-    payload: UpdateCandidatoDto,
+    payload: any,
   ): Promise<ServiceResponseHttpModel> {
-    const career = await this.candidatosListaRepository.findOneBy({ id });
-    if (!career) {
+    const candidato = await this.candidatosListaRepository.findOneBy({ id });
+    if (!candidato) {
       throw new NotFoundException(`La carrera con id:  ${id} no se encontro`);
     }
-    this.candidatosListaRepository.merge(career, payload);
-    const candidatoUpdated = await this.candidatosListaRepository.save(career);
+    this.candidatosListaRepository.merge(candidato, payload);
+    const candidatoUpdated = await this.candidatosListaRepository.save(candidato);
     return { data: candidatoUpdated };
   }
 
@@ -116,7 +117,7 @@ export class CandidatosListService {
   }
 
   private async paginateAndFilter(
-    params: FilterCandidatoListaDto,
+    params: any,
   ): Promise<ServiceResponseHttpModel> {
     let where:
       | FindOptionsWhere<CandidatosEntity>
@@ -129,17 +130,14 @@ export class CandidatosListService {
       search = search.trim();
       page = 0;
       where = [];
-      where.push({ acronym: ILike(`%${search}%`) });
-      where.push({ code: ILike(`%${search}%`) });
-      where.push({ codeSniese: ILike(`%${search}%`) });
-      where.push({ logo: ILike(`%${search}%`) });
-      where.push({ name: ILike(`%${search}%`) });
-      where.push({ shortName: ILike(`%${search}%`) });
-      where.push({ degree: ILike(`%${search}%`) });
+      where.push({ idCandidatosLista: ILike(`%${search}%`) });
+      where.push({ idLista: ILike(`%${search}%`) });
+      where.push({ idCandidato: ILike(`%${search}%`) });
+      where.push({ idCargo: ILike(`%${search}%`) });
     }
 
     const response = await this.candidatosListaRepository.findAndCount({
-      relations: ['institution', 'modality', 'state', 'type'],
+      relations: ['idLista', 'IdCandidato', 'IdCargo'],
       where,
       take: limit,
       skip: PaginationDto.getOffset(limit, page),

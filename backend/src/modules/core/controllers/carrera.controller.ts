@@ -18,13 +18,13 @@ import {
   //FilterCarreraDto,
 } from '@core/dto';
 import { CarreraEntity } from '@core/entities';
-import { CarreraService } from '@core/services';
+import { CarrerasService } from '@core/services';
 import { ResponseHttpModel } from '@shared/models';
 
 @ApiTags('Carrera')
 @Controller('carrera')
 export class CurriculaController {
-  constructor(private carreraService: CarreraService) {}
+  constructor(private carreraService: CarrerasService) {}
 
   @ApiOperation({ summary: 'Crear Carrera' })
   @Post()
@@ -47,7 +47,7 @@ export class CurriculaController {
   async findAll(
     @Query() params: any,
   ): Promise<ResponseHttpModel> {
-    const serviceResponse = await this.carreraService.findAll(params);
+    const serviceResponse = await this.carreraService.findAll();
 
     return {
       data: serviceResponse.data,

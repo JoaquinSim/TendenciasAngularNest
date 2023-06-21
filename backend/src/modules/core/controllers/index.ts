@@ -1,6 +1,6 @@
 export * from './candidatos.controller';
 export * from './cargo.controller';
-export * from './carreras.controller';
+export * from './carrera.controller';
 export * from './usuarios.controller';
 export * from './institutions.controller';
 export * from './students.controller';

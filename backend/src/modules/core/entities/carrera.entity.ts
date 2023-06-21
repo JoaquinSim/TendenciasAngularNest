@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity('carrera', { schema: 'core' })
-export class CurriculumEntity {
+export class CarreraEntity {
   @PrimaryGeneratedColumn('uuid')
   idCarrera: string;
 

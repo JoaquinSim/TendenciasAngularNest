@@ -13,19 +13,19 @@ import {
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ResponseHttpModel } from '@shared/models';
-import { CargoService } from '@core/services';
+import { CargosService } from '@core/services';
 import {
   CreateCatalogueDto,
   FilterCatalogueDto,
   UpdateCatalogueDto,
 } from '@core/dto';
 import { CargoEntity } from '@core/entities';
-import { CargoTypeEnum } from '@shared/enums';
+//import { CargoTypeEnum } from '@shared/enums';
 
 @ApiTags('cargo')
 @Controller('cargo')
-export class CataloguesController {
-  constructor(private cargoService: CargoService) {}
+export class CargoController {
+  constructor(private cargoService: CargosService) {}
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
@@ -42,7 +42,7 @@ export class CataloguesController {
   @Get('catalogue')
   @HttpCode(HttpStatus.OK)
   async catalogue(@Query('type') type: CargoTypeEnum) {
-    const response = await this.cargoService.catalogue(type);
+    const response = await this.cargoService.catalogue();
     return {
       data: response.data,
       message: `cargo`,
