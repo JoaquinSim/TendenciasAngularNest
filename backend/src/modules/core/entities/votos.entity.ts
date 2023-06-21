@@ -10,8 +10,8 @@ import {
   } from 'typeorm';
   import { CatalogueEntity, CurriculumEntity } from '@core/entities';
   
-  @Entity('subjects', { schema: 'core' })
-  export class SubjectEntity {
+  @Entity('votos', { schema: 'core' })
+  export class VotosEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
   
@@ -35,7 +35,7 @@ import {
       nullable: true,
     })
     deletedAt: Date;
-  
+  /*
     @ManyToOne(() => CatalogueEntity, { nullable: false })
     @JoinColumn({ name: 'academic_period_id' })
     academicPeriod: CatalogueEntity;
@@ -51,7 +51,7 @@ import {
     @ManyToOne(() => CatalogueEntity, { nullable: true })
     @JoinColumn({ name: 'type_id' })
     type: CatalogueEntity;
-  
+  */
     @Column('varchar', {
       name: 'id_votos',
       comment: 'Id de la tabla votos',

@@ -10,8 +10,8 @@ import {
 } from 'typeorm';
 //import { CatalogueEntity, InstitutionEntity } from '@core/entities';
 
-@Entity('lists', { schema: 'core' })
-export class ListEntity {
+@Entity('roles_usuario', { schema: 'core' })
+export class Roles_UsuarioEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

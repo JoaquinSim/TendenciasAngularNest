@@ -15,12 +15,12 @@ import {
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CreateCareerDto, UpdateCareerDto, FilterCareerDto } from '@core/dto';
 import { ListasService } from '@core/services';
-import { listas-listEntity } from '@core/entities';
+import { ListEntity } from '@core/entities';
 import { ResponseHttpModel } from '@shared/models';
 
 @ApiTags('Listas')
   @Controller('listas')
-export class CareersController {
+export class ListasController {
   constructor(private listasService: ListasService) { }
 
   @ApiOperation({ summary: 'Catalogue Listas' })
