@@ -38,8 +38,8 @@ export class CargoEntity {
   })
   deletedAt: Date;
 
-  @ManyToOne(() => CargoEntity, (category) => category.children)
-  parent: CargoEntity;
+  // @ManyToOne(() => CargoEntity, (category) => category.children)
+  // parent: CargoEntity;
 
   @OneToMany(() => CargoEntity, (category) => category.parent)
   children: CargoEntity[];

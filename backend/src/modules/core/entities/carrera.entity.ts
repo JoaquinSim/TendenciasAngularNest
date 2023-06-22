@@ -3,10 +3,11 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { UsuarioEntity } from './usuario.entity';
 
 @Entity('carrera', { schema: 'core' })
 export class CarreraEntity {
@@ -42,10 +43,9 @@ export class CarreraEntity {
     nullable: true,
   })
   deletedAT: Date;
-/*
-  @ManyToOne(() => CareerEntity, { nullable: false })
-  career: CareerEntity;
 
+  @OneToMany(() => UsuarioEntity, { nullable: false })
+/*
   @ManyToOne(() => CatalogueEntity, { nullable: false })
   state: CatalogueEntity;
 */
@@ -66,3 +66,7 @@ export class CarreraEntity {
  })
  nombre: string
 }
+function OneToMane(arg0: () => typeof UsuarioEntity, arg1: { nullable: boolean; }): (target: CarreraEntity, propertyKey: "codigo") => void {
+  throw new Error('Function not implemented.');
+}
+

@@ -9,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { CarreraEntity } from './carrera.entity';
 
 @Entity('usuario', { schema: 'core' })
 export class UsuarioEntity {
@@ -38,13 +39,12 @@ export class UsuarioEntity {
     comment: 'fecha de eliminación de usuario'
   })
   deletedAt: Date;
+
+  @ManyToOne(() => CarreraEntity, { nullable: true })
+  isExecutedPractice: CarreraEntity;
 /*
   @OneToOne(() => StudentEntity)
   student: StudentEntity;
-
-  @ManyToOne(() => CatalogueEntity, { nullable: true })
-  @JoinColumn({ name: 'is_executed_practice' })
-  isExecutedPractice: CatalogueEntity;
 
   @ManyToOne(() => CatalogueEntity, { nullable: true })
   @JoinColumn({ name: 'is_executed_community' })

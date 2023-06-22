@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CatalogueEntity, InstitutionEntity } from '@core/entities';
+import { CandidatosEntity } from '@core/entities';
 
 @Entity('lists', { schema: 'core' })
 export class ListEntity {
@@ -39,9 +39,10 @@ export class ListEntity {
   })
   deletedAt: Date;
 
-  //   @ManyToOne(() => InstitutionEntity, {
-  //     nullable: true,
-  //   })
+  @ManyToOne(() => CandidatosEntity, {
+    nullable: true,
+  })
+
   //   @JoinColumn({ name: 'institution_id' })
   //   institution: InstitutionEntity;
 
