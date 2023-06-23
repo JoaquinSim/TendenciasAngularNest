@@ -15,7 +15,7 @@ import {
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CreateCareerDto, UpdateCareerDto, FilterCareerDto } from '@core/dto';
 import { ListasService } from '@core/services';
-import { ListEntity } from '@core/entities';
+import { ListasEntity } from '@core/entities';
 import { ResponseHttpModel } from '@shared/models';
 
 @ApiTags('Listas')
