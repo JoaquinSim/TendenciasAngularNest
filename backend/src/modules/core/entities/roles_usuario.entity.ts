@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-//import { CatalogueEntity, InstitutionEntity } from '@core/entities';
+import { CatalogueEntity, RolesEntity, } from '@core/entities';
 
 @Entity('roles_usuario', { schema: 'core' })
 export class Roles_UsuarioEntity {
@@ -39,11 +39,11 @@ export class Roles_UsuarioEntity {
   })
   deletedAt: Date;
 
-  //   @ManyToOne(() => InstitutionEntity, {
-  //     nullable: true,
-  //   })
-  //   @JoinColumn({ name: 'institution_id' })
-  //   institution: InstitutionEntity;
+    @ManyToOne(() => RolesEntity, {
+      nullable: true,
+    })
+    @JoinColumn({ name: 'id_roles_usuario' })
+    institution: RolesEntity;
 
   //   @ManyToOne(() => CatalogueEntity, {
   //     nullable: true,

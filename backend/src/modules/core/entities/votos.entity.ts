@@ -8,7 +8,7 @@ import {
     UpdateDateColumn,
     DeleteDateColumn,
   } from 'typeorm';
-  import { CatalogueEntity, CurriculumEntity } from '@core/entities';
+  import { CatalogueEntity, CurriculumEntity, ListasEntity } from '@core/entities';
   
   @Entity('votos', { schema: 'core' })
   export class VotosEntity {
@@ -35,11 +35,11 @@ import {
       nullable: true,
     })
     deletedAt: Date;
-  /*
-    @ManyToOne(() => CatalogueEntity, { nullable: false })
-    @JoinColumn({ name: 'academic_period_id' })
-    academicPeriod: CatalogueEntity;
   
+    @ManyToOne(() => ListasEntity, { nullable: false })
+    @JoinColumn({ name: 'id_votos' })
+    academicPeriod: ListasEntity;
+  /*
     @ManyToOne(() => CurriculumEntity, { nullable: false })
     @JoinColumn({ name: 'curriculum_id' })
     curriculum: CurriculumEntity;

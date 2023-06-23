@@ -7,8 +7,9 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn,
+    OneToMany,
   } from 'typeorm';
-  import { CatalogueEntity, CurriculumEntity } from '@core/entities';
+  import { CatalogueEntity, CurriculumEntity, VotosEntity } from '@core/entities';
   
   @Entity('listas', { schema: 'core' })
   export class ListasEntity {
@@ -35,11 +36,15 @@ import {
       nullable: true,
     })
     deletedAt: Date;
-  /*
-    @ManyToOne(() => CatalogueEntity, { nullable: false })
-    @JoinColumn({ name: 'academic_period_id' })
-    academicPeriod: CatalogueEntity;
   
+    //@OneToMany(() => ListasEntity, (category) => category.parent)
+    //@JoinColumn({ name: 'academic_period_id' })
+    //academicPeriod: CatalogueEntity;
+
+    @OneToMany(() => VotosEntity, (votos) => votos.lista)
+    @JoinColumn({ name: 'id_lista' })
+    address: VotosEntity;
+  /*
     @ManyToOne(() => CurriculumEntity, { nullable: false })
     @JoinColumn({ name: 'curriculum_id' })
     curriculum: CurriculumEntity;

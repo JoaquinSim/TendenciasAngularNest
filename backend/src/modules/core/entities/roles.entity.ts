@@ -7,8 +7,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
-import { CatalogueEntity, CurriculumEntity } from '@core/entities';
+import { Roles_UsuarioEntity } from '@core/entities';
+
 
 @Entity('roles', { schema: 'core' })
 export class RolesEntity {
@@ -35,6 +37,10 @@ export class RolesEntity {
     nullable: true,
   })
   deletedAt: Date;
+
+  @OneToMany(() => Roles_UsuarioEntity, (roles_usuario) => roles_usuario.id_rol)
+    @JoinColumn({ name: 'id_roles' })
+    address: Roles_UsuarioEntity;
 /*
   @ManyToOne(() => CatalogueEntity, { nullable: false })
   @JoinColumn({ name: 'academic_period_id' })
